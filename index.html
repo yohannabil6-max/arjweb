@@ -63,12 +63,24 @@
     text-shadow: 0 0 10px #ff0000, 0 0 25px #ff0000;
   }
 
+  /* Animasi Teks Rainbow */
+  @keyframes rainbow {
+    0% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
+    17% { color: #ff8800; text-shadow: 0 0 10px #ff8800; }
+    33% { color: #ffff00; text-shadow: 0 0 10px #ffff00; }
+    50% { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
+    67% { color: #00ccff; text-shadow: 0 0 10px #00ccff; }
+    83% { color: #8800ff; text-shadow: 0 0 10px #8800ff; }
+    100% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
+  }
+
   .header p {
-    margin-top: 5px;
-    color: #ff9999;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    font-weight: 700;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    font-weight: 900;
+    /* Menerapkan animasi rainbow */
+    animation: rainbow 4s linear infinite;
   }
 
   /* Search & Total */
@@ -106,12 +118,12 @@
     padding-left: 10px;
   }
 
-  /* Grid Card (Tata Letak Kotak Persegi) */
+  /* Grid Card (Tata Letak Kotak 2 Kolom) */
   .script-grid {
     display: grid;
-    /* Jejer 3 kolom di HP */
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 10px;
+    /* DIUBAH MENJADI 2 KOLOM */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px;
     max-width: 900px;
     margin: 0 auto;
     padding-bottom: 40px;
@@ -120,13 +132,12 @@
   /* Desain Kotak Script */
   .script-card {
     background: #0a0a0a;
-    border: 1px solid #ff2b2b; /* Garis Tepi Merah */
+    border: 1px solid #ff2b2b;
     border-radius: 8px;
-    padding: 10px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Agar tombol selalu di bawah */
-    aspect-ratio: 1 / 1.1; /* Membuat bentuk kotak proporsional */
+    min-height: 170px; 
     transition: 0.2s;
   }
 
@@ -135,13 +146,14 @@
   }
 
   .card-top {
-    flex: 1;
+    flex: 1; 
+    margin-bottom: 10px; 
     overflow: hidden;
   }
 
   .card-top h4 {
     color: #ff4d4d;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 800;
     margin-bottom: 5px;
     white-space: nowrap;
@@ -150,11 +162,11 @@
   }
 
   .card-top .desc {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     color: #aaa;
-    line-height: 1.2;
+    line-height: 1.3;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Batasi maksimal 3 baris */
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -162,32 +174,33 @@
   .card-bottom {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    margin-top: 8px;
+    gap: 8px;
   }
 
   .view-counter {
-    font-size: 0.55rem;
+    font-size: 0.7rem;
     color: #ff9999;
     text-align: center;
-    font-weight: 600;
+    font-weight: 700;
     background: #1a0000;
-    padding: 3px;
+    padding: 5px;
     border-radius: 4px;
     border: 1px dashed #ff4d4d;
+    width: 100%;
+    display: block;
   }
 
   .btn-row {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
   }
 
   .btn-view, .copy-btn {
     width: 100%;
-    padding: 5px;
+    padding: 8px;
     font-weight: 700;
-    font-size: 0.6rem;
+    font-size: 0.75rem;
     cursor: pointer;
     border-radius: 4px;
     text-align: center;
@@ -210,14 +223,14 @@
 
   .admin-card-actions { 
     display: flex; 
-    gap: 4px; 
-    margin-top: 5px; 
+    gap: 6px; 
+    margin-top: 4px; 
   }
   
   .admin-card-actions button {
     flex: 1; 
-    padding: 5px; 
-    font-size: 0.6rem; 
+    padding: 6px; 
+    font-size: 0.7rem; 
     border-radius: 4px; 
     cursor: pointer; 
     font-weight: 700;
@@ -351,7 +364,7 @@
     <div class="total-script" id="totalScriptText">Total: 0 Script</div>
   </div>
 
-  <!-- GRID SCRIPT (KOTAK) -->
+  <!-- GRID SCRIPT (2 KOLOM) -->
   <div class="script-grid" id="scriptGrid">
     <div class="empty-msg">Memuat data script...</div>
   </div>
@@ -485,7 +498,6 @@
         (sc.desc || "").toLowerCase().includes(filterText.toLowerCase())
       );
 
-      // Update Total Script di UI
       totalScriptText.textContent = `Total: ${filtered.length} Script`;
 
       if (filtered.length === 0) {
@@ -509,7 +521,6 @@
 
         const views = sc.views || 0;
 
-        // TIDAK ADA LAGI TAG <img> DI SINI
         card.innerHTML = `
           <div class="card-top">
             <h4 title="${escapeHtml(sc.title)}">${escapeHtml(sc.title)}</h4>
