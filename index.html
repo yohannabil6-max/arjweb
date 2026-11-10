@@ -174,6 +174,25 @@
     border: 1px dashed #ff4d4d;
   }
 
+  .btn-row {
+    display: flex;
+    gap: 8px;
+  }
+
+  .btn-view {
+    background: #222;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 12px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    flex: 1;
+    transition: 0.2s;
+  }
+
+  .btn-view:hover { background: #333; border-color: #888; }
+
   .copy-btn {
     width: 100%;
     padding: 12px;
@@ -186,6 +205,7 @@
     border-radius: 8px;
     transition: 0.25s;
     font-size: 0.9rem;
+    flex: 1.5;
   }
 
   .copy-btn:hover {
@@ -276,11 +296,8 @@
   }
 
   .btn-green { background: #00ff88; color: #000; }
-  .btn-green:hover { background: #00cc6a; }
   .btn-red { background: #ff2b2b; color: #fff; }
-  .btn-red:hover { background: #cc0000; }
   .btn-outline { background: transparent; border: 1px solid #ff2b2b; color: #ff4d4d; }
-  .btn-outline:hover { background: #1a0000; }
 
   .admin-card-actions { display: flex; gap: 8px; margin-top: 10px; }
   .admin-card-actions button {
@@ -332,6 +349,22 @@
     font-size: 0.9rem;
     font-weight: 600;
   }
+
+  /* Code Viewer */
+  .code-viewer {
+    width: 100%;
+    background: #000;
+    color: #00ff88;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    white-space: pre-wrap;
+    max-height: 60vh;
+    overflow-y: auto;
+    border: 1px solid #333;
+    margin-bottom: 15px;
+  }
 </style>
 </head>
 <body>
@@ -366,7 +399,18 @@
     </div>
   </div>
 
-  <!-- MODAL FORM -->
+  <!-- MODAL LIHAT SCRIPT -->
+  <div class="modal" id="viewScriptModal">
+    <div class="modal-box" style="max-width: 600px;">
+      <h3 id="viewScriptTitle">📄 LIHAT SCRIPT</h3>
+      <div class="code-viewer" id="viewScriptCode"></div>
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="closeViewBtn">TUTUP</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL FORM ADMIN -->
   <div class="modal" id="adminFormModal">
     <div class="modal-box">
       <h3 id="formTitle">⚙️ UPLOAD SCRIPT BARU</h3>
@@ -374,7 +418,7 @@
       <label>Judul Script</label>
       <input type="text" id="scriptTitle" placeholder="Contoh: Auto Farm Blox Fruits">
 
-      <label>Pilih Foto dari Galeri (Otomatis Upload)</label>
+      <label>Pilih Foto dari Galeri</label>
       <div class="file-input-wrapper">
         <button class="file-input-btn" id="fileBtnText">📁 Pilih Gambar...</button>
         <input type="file" id="scriptFile" accept="image/*">
@@ -400,7 +444,7 @@
   <div class="toast" id="toast">✔ Berhasil</div>
 
   <!-- ========================================== -->
-  <!-- LOGIC FIREBASE & IMGBB                     -->
+  <!-- LOGIC FIREBASE & CATBOX.MOE (UPLOAD GAMBAR) -->
   <!-- ========================================== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
@@ -422,9 +466,6 @@
     const db = getDatabase(app);
     const dbRef = ref(db, 'scripts');
 
-    /* ================= KONFIGURASI IMGBB ================= */
-    const IMGBB_API_KEY = "7d99e80ba32f01206cc5f9ef70d98e1f"; 
-
     /* ================= KONFIGURASI LAIN ================= */
     const ADMIN_PASSWORD = "11";
     const LOGIN_KEY = "arj_admin_logged";
@@ -441,6 +482,7 @@
     const logoutBtn = $("logoutBtn");
     const loginModal = $("loginModal");
     const adminFormModal = $("adminFormModal");
+    const viewScriptModal = $("viewScriptModal");
     const toast = $("toast");
     const searchInput = $("searchInput");
     const fileInput = $("scriptFile");
@@ -523,7 +565,10 @@
             
             <div class="card-footer">
               <div class="view-counter">👁️ ${views} Kali Di-Copy</div>
-              <button class="copy-btn" data-id="${sc.id}">📋 COPY SCRIPT</button>
+              <div class="btn-row">
+                <button class="btn-view" data-view="${sc.id}">📄 LIHAT</button>
+                <button class="copy-btn" data-id="${sc.id}">📋 COPY SCRIPT</button>
+              </div>
               ${adminButtons}
             </div>
           </div>
@@ -533,6 +578,10 @@
 
       grid.querySelectorAll(".copy-btn").forEach(btn => {
         btn.addEventListener("click", () => copyScript(btn.dataset.id, btn));
+      });
+
+      grid.querySelectorAll(".btn-view").forEach(btn => {
+        btn.addEventListener("click", () => viewScript(btn.dataset.view));
       });
 
       if (isAdmin) {
@@ -550,6 +599,17 @@
       render(e.target.value);
     });
 
+    /* ================= LIHAT SCRIPT ================= */
+    function viewScript(id) {
+      const sc = scripts.find(s => s.id === id);
+      if (!sc) return;
+      $("viewScriptTitle").textContent = "📄 " + sc.title;
+      $("viewScriptCode").textContent = sc.content;
+      viewScriptModal.classList.add("show");
+    }
+
+    $("closeViewBtn").addEventListener("click", () => viewScriptModal.classList.remove("show"));
+
     /* ================= COPY SCRIPT & TAMBAH VIEW ================= */
     function copyScript(id, btn) {
       const sc = scripts.find(s => s.id === id);
@@ -562,7 +622,6 @@
             btn.classList.add("copied");
             showToast("Script berhasil disalin!");
             
-            // TAMBAH VIEW KE FIREBASE SECARA REALTIME
             const viewRef = ref(db, `scripts/${id}/views`);
             runTransaction(viewRef, (currentViews) => {
               return (currentViews || 0) + 1;
@@ -586,7 +645,6 @@
             btn.classList.add("copied");
             showToast("Script berhasil disalin!");
             
-            // TAMBAH VIEW KE FIREBASE
             const viewRef = ref(db, `scripts/${id}/views`);
             runTransaction(viewRef, (currentViews) => {
               return (currentViews || 0) + 1;
@@ -666,7 +724,7 @@
       editingId = null;
     });
 
-    // PROSES SIMPAN (UPLOAD KE IMGBB + SIMPAN KE FIREBASE)
+    // PROSES SIMPAN (UPLOAD KE CATBOX.MOE + SIMPAN KE FIREBASE)
     $("saveBtn").addEventListener("click", async () => {
       const title = $("scriptTitle").value.trim();
       const imageLink = $("scriptImage").value.trim();
@@ -685,22 +743,23 @@
       try {
         let finalImageUrl = imageLink;
 
-        // JIKA ADMIN MEMILIH FOTO DARI GALERI, UPLOAD KE IMGBB
+        // UPLOAD GAMBAR KE CATBOX.MOE (GRATIS & ANTI BLOKIR)
         if (file) {
           const formData = new FormData();
-          formData.append("image", file);
+          formData.append("reqtype", "fileupload");
+          formData.append("fileToUpload", file);
 
-          const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+          const response = await fetch("https://catbox.moe/user/api.php", {
             method: "POST",
             body: formData
           });
           
-          const result = await response.json();
+          const result = await response.text(); // Catbox mengembalikan URL dalam bentuk teks biasa
           
-          if (result.success) {
-            finalImageUrl = result.data.url; 
+          if (result.startsWith("https://")) {
+            finalImageUrl = result.trim(); 
           } else {
-            throw new Error("Gagal upload ke ImgBB");
+            throw new Error("Gagal upload ke server gambar");
           }
         }
 
@@ -727,7 +786,7 @@
         editingId = null;
       } catch (error) {
         console.error(error);
-        showToast("Gagal upload gambar, cek koneksi!", "#ff2b2b");
+        showToast("Gagal upload gambar, coba lagi!", "#ff2b2b");
       } finally {
         $("saveBtn").textContent = "💾 SIMPAN SCRIPT";
         $("saveBtn").disabled = false;
@@ -792,4 +851,4 @@
     updateAdminUI();
   </script>
 </body>
-</html>
+ </html>
