@@ -726,7 +726,7 @@
       editingId = null;
     });
 
-    // PROSES SIMPAN (UPLOAD KE IMGBB + SIMPAN KE FIREBASE)
+    // PROSES SIMPAN (UPLOAD KE IMGBB + FIX GAMBAR NO IMAGE)
     $("saveBtn").addEventListener("click", async () => {
       const title = $("scriptTitle").value.trim();
       const imageLink = $("scriptImage").value.trim();
@@ -764,6 +764,14 @@
           }
         }
 
+        // VALIDASI JIKA USER MEMASUKKAN LINK MANUAL
+        if (!file && finalImageUrl) {
+          // Jika link bukan link gambar yang valid, kita bisa beri peringatan
+          if (!finalImageUrl.startsWith("http")) {
+            throw new Error("Link gambar tidak valid (harus diawali http)");
+          }
+        }
+
         const dataScript = { 
           title, 
           image: finalImageUrl, 
@@ -787,7 +795,7 @@
         editingId = null;
       } catch (error) {
         console.error(error);
-        showToast("Gagal Upload / Link Invalid!", "#ff2b2b");
+        showToast("Upload Gagal / Link Invalid!", "#ff2b2b");
       } finally {
         $("saveBtn").textContent = "💾 SIMPAN SCRIPT";
         $("saveBtn").disabled = false;
@@ -852,4 +860,4 @@
     updateAdminUI();
   </script>
 </body>
- </html>
+</html>
