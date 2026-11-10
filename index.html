@@ -10,14 +10,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, sans-serif;
-    border-radius: 12px; 
+    border-radius: 8px; /* Sudut membulat tipis */
   }
 
   body {
     min-height: 100vh;
     background: #050505;
     color: #fff;
-    padding: 20px;
+    padding: 15px;
     position: relative;
   }
 
@@ -51,172 +51,190 @@
   /* Header */
   .header {
     text-align: center;
-    padding: 60px 10px 20px;
+    padding: 50px 10px 15px;
   }
 
   .header h1 {
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-size: clamp(1.3rem, 5vw, 2rem);
     font-weight: 900;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: #ff2b2b;
-    text-shadow: 0 0 10px #ff0000, 0 0 25px #ff0000, 0 0 50px #990000;
-    animation: glow 2s ease-in-out infinite alternate;
-  }
-
-  @keyframes glow {
-    from { text-shadow: 0 0 10px #ff0000, 0 0 25px #ff0000, 0 0 50px #990000; }
-    to   { text-shadow: 0 0 18px #ff4444, 0 0 45px #ff0000, 0 0 80px #cc0000; }
+    text-shadow: 0 0 10px #ff0000, 0 0 25px #ff0000;
   }
 
   .header p {
-    margin-top: 8px;
+    margin-top: 5px;
     color: #ff9999;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
     font-weight: 700;
   }
 
-  /* Search */
+  /* Search & Total */
   .search-container {
-    max-width: 500px;
-    margin: 0 auto 30px;
-    padding: 0 10px;
-  }
-
-  .search-container input {
-    width: 100%;
-    padding: 12px 20px;
-    background: #111;
-    border: 1px solid #ff2b2b;
-    color: #fff;
-    font-size: 0.9rem;
-    border-radius: 30px;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
-    transition: 0.3s;
-  }
-
-  .search-container input::placeholder { color: #ff9999; }
-
-  .search-container input:focus {
-    outline: none;
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
-    background: #1a1a1a;
-  }
-
-  /* Grid Card */
-  .script-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding-bottom: 40px;
-  }
-
-  .script-card {
-    background: #0a0a0a;
-    border: 1px solid #333;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.2s, border-color 0.2s;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .script-card:hover {
-    transform: translateY(-3px);
-    border-color: #ff2b2b;
-  }
-
-  .script-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-bottom: 1px solid #333;
-    background: #000;
-  }
-
-  .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
-
-  .card-body h4 {
-    color: #ff4d4d;
-    margin-bottom: 8px;
-    font-size: 1.1rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-  }
-
-  .card-body .desc {
-    font-size: 0.85rem;
-    color: #aaa;
-    margin-bottom: 15px;
-    line-height: 1.4;
-    flex: 1;
-    font-weight: 500;
-  }
-
-  /* Tata Letak Button & View */
-  .card-footer {
+    max-width: 600px;
+    margin: 0 auto 10px;
+    padding: 0 5px;
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
 
-  .view-counter {
+  .search-container input {
+    width: 100%;
+    padding: 10px 15px;
+    background: #111;
+    border: 1px solid #ff2b2b;
+    color: #fff;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+  }
+
+  .search-container input:focus {
+    outline: none;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  }
+
+  /* Teks Total Script */
+  .total-script {
+    text-align: left;
+    font-size: 0.8rem;
+    color: #ff9999;
+    font-weight: 700;
+    padding-left: 10px;
+  }
+
+  /* Grid Card (Tata Letak Kecil & Jejer) */
+  .script-grid {
+    display: grid;
+    /* Ini yang membuatnya jejer 3 kolom di HP */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+  }
+
+  /* Desain Kotak Script */
+  .script-card {
+    background: #0a0a0a;
+    border: 1px solid #ff2b2b; /* GARIS TEPI MERAH */
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s;
+  }
+
+  .script-card:hover {
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+  }
+
+  .script-card img {
+    width: 100%;
+    height: 80px; /* Gambar kecil */
+    object-fit: cover;
+    border-bottom: 1px solid #ff2b2b;
+    background: #000;
+  }
+
+  .card-body { 
+    padding: 8px; 
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+  }
+
+  .card-body h4 {
+    color: #ff4d4d;
     font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-body .desc {
+    font-size: 0.65rem;
+    color: #aaa;
+    margin-bottom: 8px;
+    line-height: 1.2;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .view-counter {
+    font-size: 0.6rem;
     color: #ff9999;
     text-align: center;
     font-weight: 600;
     background: #1a0000;
-    padding: 6px;
-    border-radius: 6px;
+    padding: 4px;
+    border-radius: 4px;
     border: 1px dashed #ff4d4d;
   }
 
   .btn-row {
     display: flex;
-    gap: 8px;
+    flex-direction: column; /* Tombol menumpuk ke bawah agar muat di kotak kecil */
+    gap: 4px;
+  }
+
+  .btn-view, .copy-btn {
+    width: 100%;
+    padding: 6px;
+    font-weight: 700;
+    font-size: 0.65rem;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid #ff2b2b;
   }
 
   .btn-view {
     background: #222;
-    border: 1px solid #555;
     color: #fff;
-    padding: 12px;
-    font-weight: 700;
-    border-radius: 8px;
-    cursor: pointer;
-    flex: 1;
-    transition: 0.2s;
+    border-color: #555;
   }
-
-  .btn-view:hover { background: #333; border-color: #888; }
 
   .copy-btn {
-    width: 100%;
-    padding: 12px;
     background: #111;
-    border: 1px solid #ff2b2b;
     color: #ff4d4d;
-    font-weight: 800;
-    letter-spacing: 1px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: 0.25s;
-    font-size: 0.9rem;
-    flex: 1.5;
   }
 
-  .copy-btn:hover {
-    background: #ff2b2b;
-    color: #fff;
+  .copy-btn:hover { background: #ff2b2b; color: #fff; }
+  .copy-btn.copied { border-color: #00ff88; color: #00ff88; }
+
+  .admin-card-actions { 
+    display: flex; 
+    gap: 4px; 
+    margin-top: 5px; 
+  }
+  
+  .admin-card-actions button {
+    flex: 1; 
+    padding: 5px; 
+    font-size: 0.6rem; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-weight: 700;
+    border: none;
   }
 
-  .copy-btn.copied {
-    border-color: #00ff88;
-    color: #00ff88;
-  }
+  .btn-edit { background: #ffcc00; color: #000; }
+  .btn-del { background: #ff2b2b; color: #fff; }
 
   /* Modal & Form */
   .modal {
@@ -227,8 +245,7 @@
     z-index: 999;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    backdrop-filter: blur(4px);
+    padding: 15px;
   }
 
   .modal.show { display: flex; }
@@ -236,134 +253,110 @@
   .modal-box {
     background: #0a0a0a;
     border: 1px solid #ff2b2b;
-    padding: 25px;
-    border-radius: 12px;
-    max-width: 450px;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 400px;
     width: 100%;
-    box-shadow: 0 0 35px rgba(255, 0, 0, 0.4);
     max-height: 90vh;
     overflow-y: auto;
   }
 
   .modal-box h3 {
     color: #ff4d4d;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .modal-box input, .modal-box textarea {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     background: #111;
     border: 1px solid #333;
     color: #fff;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-  }
-
-  .modal-box textarea {
-    min-height: 120px;
-    font-family: monospace;
-    resize: vertical;
-  }
-
-  .modal-box input:focus, .modal-box textarea:focus {
-    outline: none;
-    border-color: #ff2b2b;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
   }
 
   .modal-box label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     color: #ff9999;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 600;
   }
 
-  .modal-actions { display: flex; gap: 10px; margin-top: 15px; }
+  .modal-actions { display: flex; gap: 8px; margin-top: 10px; }
   
   .btn {
-    padding: 10px 20px;
+    padding: 8px;
     font-weight: 700;
     cursor: pointer;
-    border-radius: 8px;
-    transition: 0.2s;
+    border-radius: 6px;
     text-align: center;
     flex: 1;
     border: none;
+    font-size: 0.75rem;
   }
 
   .btn-green { background: #00ff88; color: #000; }
   .btn-red { background: #ff2b2b; color: #fff; }
   .btn-outline { background: transparent; border: 1px solid #ff2b2b; color: #ff4d4d; }
 
-  .admin-card-actions { display: flex; gap: 8px; margin-top: 10px; }
-  .admin-card-actions button {
-    flex: 1; padding: 8px; font-size: 0.75rem; border-radius: 6px; cursor: pointer; font-weight: 700;
-  }
-
   .empty-msg {
     text-align: center;
     color: #ff9999;
-    padding: 50px 10px;
-    font-size: 0.95rem;
+    padding: 30px 10px;
+    font-size: 0.85rem;
     grid-column: 1 / -1;
   }
 
   .toast {
-    position: fixed; bottom: 25px; left: 50%;
+    position: fixed; bottom: 20px; left: 50%;
     transform: translateX(-50%) translateY(100px);
     background: #111; border: 1px solid #00ff88; color: #00ff88;
-    padding: 12px 24px; border-radius: 30px; font-size: 0.85rem;
+    padding: 10px 20px; border-radius: 20px; font-size: 0.75rem;
     opacity: 0; transition: 0.3s; z-index: 1000; font-weight: 700;
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  /* Input File Kustom */
-  .file-input-wrapper {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    width: 100%;
-  }
-  .file-input-wrapper input[type=file] {
-    font-size: 100px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    cursor: pointer;
-  }
+  .file-input-wrapper { position: relative; overflow: hidden; width: 100%; margin-bottom: 10px; }
+  .file-input-wrapper input[type=file] { font-size: 100px; position: absolute; left: 0; top: 0; opacity: 0; cursor: pointer; }
   .file-input-btn {
     border: 1px dashed #ff2b2b;
     color: #ff4d4d;
     background: #111;
-    padding: 12px;
-    border-radius: 8px;
+    padding: 10px;
+    border-radius: 6px;
     text-align: center;
     display: block;
     width: 100%;
     cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 0.75rem;
   }
 
-  /* Code Viewer */
   .code-viewer {
     width: 100%;
     background: #000;
     color: #00ff88;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 10px;
+    border-radius: 6px;
     font-family: monospace;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     white-space: pre-wrap;
-    max-height: 60vh;
+    max-height: 50vh;
     overflow-y: auto;
     border: 1px solid #333;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+  }
+
+  /* Responsif untuk layar sangat kecil */
+  @media (max-width: 400px) {
+    .script-grid { gap: 6px; }
+    .card-body h4 { font-size: 0.65rem; }
+    .card-body .desc { font-size: 0.55rem; }
+    .btn-view, .copy-btn { font-size: 0.55rem; padding: 4px; }
   }
 </style>
 </head>
@@ -381,8 +374,10 @@
 
   <div class="search-container">
     <input type="text" id="searchInput" placeholder="🔍 Cari script di sini...">
+    <div class="total-script" id="totalScriptText">Total: 0 Script</div>
   </div>
 
+  <!-- GRID SCRIPT (KECIL & JEJER) -->
   <div class="script-grid" id="scriptGrid">
     <div class="empty-msg">Memuat data script...</div>
   </div>
@@ -401,7 +396,7 @@
 
   <!-- MODAL LIHAT SCRIPT -->
   <div class="modal" id="viewScriptModal">
-    <div class="modal-box" style="max-width: 600px;">
+    <div class="modal-box">
       <h3 id="viewScriptTitle">📄 LIHAT SCRIPT</h3>
       <div class="code-viewer" id="viewScriptCode"></div>
       <div class="modal-actions">
@@ -416,26 +411,25 @@
       <h3 id="formTitle">⚙️ UPLOAD SCRIPT BARU</h3>
       
       <label>Judul Script</label>
-      <input type="text" id="scriptTitle" placeholder="Contoh: Auto Farm Blox Fruits">
+      <input type="text" id="scriptTitle" placeholder="Contoh: Auto Farm">
 
       <label>Pilih Foto dari Galeri</label>
       <div class="file-input-wrapper">
         <button class="file-input-btn" id="fileBtnText">📁 Pilih Gambar...</button>
         <input type="file" id="scriptFile" accept="image/*">
       </div>
-      <div style="text-align:center; color:#666; font-size:0.75rem; margin: 10px 0;">- ATAU -</div>
 
       <label>Link Gambar (URL)</label>
       <input type="text" id="scriptImage" placeholder="https://...">
 
       <label>Deskripsi Singkat</label>
-      <input type="text" id="scriptDesc" placeholder="Deskripsi script...">
+      <input type="text" id="scriptDesc" placeholder="Deskripsi...">
 
       <label>Isi Script (Raw Code)</label>
-      <textarea id="scriptContent" placeholder="-- tempel script roblox di sini --"></textarea>
+      <textarea id="scriptContent" placeholder="-- tempel script --"></textarea>
 
       <div class="modal-actions">
-        <button class="btn btn-green" id="saveBtn">💾 SIMPAN SCRIPT</button>
+        <button class="btn btn-green" id="saveBtn">💾 SIMPAN</button>
         <button class="btn btn-outline" id="closeFormBtn">TUTUP</button>
       </div>
     </div>
@@ -444,7 +438,7 @@
   <div class="toast" id="toast">✔ Berhasil</div>
 
   <!-- ========================================== -->
-  <!-- LOGIC FIREBASE & UGUU.SE (UPLOAD GAMBAR)   -->
+  <!-- LOGIC FIREBASE & IMGBB                     -->
   <!-- ========================================== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
@@ -466,7 +460,8 @@
     const db = getDatabase(app);
     const dbRef = ref(db, 'scripts');
 
-    /* ================= KONFIGURASI LAIN ================= */
+    /* ================= KONFIGURASI ================= */
+    const IMGBB_API_KEY = "7d99e80ba32f01206cc5f9ef70d98e1f"; 
     const ADMIN_PASSWORD = "11";
     const LOGIN_KEY = "arj_admin_logged";
 
@@ -487,6 +482,7 @@
     const searchInput = $("searchInput");
     const fileInput = $("scriptFile");
     const fileBtnText = $("fileBtnText");
+    const totalScriptText = $("totalScriptText");
 
     /* ================= UTIL ================= */
     function showToast(msg, color = "#00ff88") {
@@ -534,8 +530,11 @@
         (sc.desc || "").toLowerCase().includes(filterText.toLowerCase())
       );
 
+      // Update Total Script di UI
+      totalScriptText.textContent = `Total: ${filtered.length} Script`;
+
       if (filtered.length === 0) {
-        grid.innerHTML = `<div class="empty-msg">Belum ada script yang tersedia.<br><br>${isAdmin ? 'Silakan klik tombol + UPLOAD SCRIPT di pojok kanan bawah.' : 'Silakan cek kembali nanti.'}</div>`;
+        grid.innerHTML = `<div class="empty-msg">Belum ada script.<br><br>${isAdmin ? 'Silakan klik + UPLOAD SCRIPT.' : 'Cek lagi nanti.'}</div>`;
         return;
       }
 
@@ -547,8 +546,8 @@
         if (isAdmin) {
           adminButtons = `
             <div class="admin-card-actions">
-              <button class="btn-outline" data-edit="${sc.id}">✏️ EDIT</button>
-              <button class="btn-red" data-del="${sc.id}">🗑️ HAPUS</button>
+              <button class="btn-edit" data-edit="${sc.id}">✏️</button>
+              <button class="btn-del" data-del="${sc.id}">🗑️</button>
             </div>
           `;
         }
@@ -559,14 +558,14 @@
         card.innerHTML = `
           <img src="${imgUrl}" alt="${escapeHtml(sc.title)}" onerror="this.src='https://placehold.co/600x400/1a0000/ff2b2b?text=No+Image'">
           <div class="card-body">
-            <h4>${escapeHtml(sc.title)}</h4>
+            <h4 title="${escapeHtml(sc.title)}">${escapeHtml(sc.title)}</h4>
             <div class="desc">${escapeHtml(sc.desc || "-")}</div>
             
             <div class="card-footer">
-              <div class="view-counter">👁️ ${views} Kali Di-Copy</div>
+              <div class="view-counter">👁️ ${views} Copy</div>
               <div class="btn-row">
                 <button class="btn-view" data-view="${sc.id}">📄 LIHAT</button>
-                <button class="copy-btn" data-id="${sc.id}">📋 COPY SCRIPT</button>
+                <button class="copy-btn" data-id="${sc.id}">📋 COPY</button>
               </div>
               ${adminButtons}
             </div>
@@ -617,40 +616,35 @@
       const doCopy = (text) => {
         if (navigator.clipboard && window.isSecureContext) {
           navigator.clipboard.writeText(text).then(() => {
-            btn.textContent = "✔ TERSALIN!";
+            btn.textContent = "✔!";
             btn.classList.add("copied");
-            showToast("Script berhasil disalin!");
+            showToast("Script disalin!");
             
             const viewRef = ref(db, `scripts/${id}/views`);
-            runTransaction(viewRef, (currentViews) => {
-              return (currentViews || 0) + 1;
-            });
+            runTransaction(viewRef, (currentViews) => (currentViews || 0) + 1);
 
             setTimeout(() => {
-              btn.textContent = "📋 COPY SCRIPT";
+              btn.textContent = "📋 COPY";
               btn.classList.remove("copied");
             }, 2000);
           });
         } else {
           const ta = document.createElement("textarea");
           ta.value = text;
-          ta.style.position = "fixed";
-          ta.style.opacity = "0";
+          ta.style.position = "fixed"; ta.style.opacity = "0";
           document.body.appendChild(ta);
           ta.select();
           try {
             document.execCommand("copy");
-            btn.textContent = "✔ TERSALIN!";
+            btn.textContent = "✔!";
             btn.classList.add("copied");
-            showToast("Script berhasil disalin!");
+            showToast("Script disalin!");
             
             const viewRef = ref(db, `scripts/${id}/views`);
-            runTransaction(viewRef, (currentViews) => {
-              return (currentViews || 0) + 1;
-            });
+            runTransaction(viewRef, (currentViews) => (currentViews || 0) + 1);
 
             setTimeout(() => {
-              btn.textContent = "📋 COPY SCRIPT";
+              btn.textContent = "📋 COPY";
               btn.classList.remove("copied");
             }, 2000);
           } catch (e) {
@@ -671,7 +665,6 @@
     });
 
     $("closeLogin").addEventListener("click", () => loginModal.classList.remove("show"));
-
     $("submitLogin").addEventListener("click", tryLogin);
     $("passwordInput").addEventListener("keydown", e => {
       if (e.key === "Enter") tryLogin();
@@ -723,7 +716,7 @@
       editingId = null;
     });
 
-    // PROSES SIMPAN (UPLOAD KE UGUU.SE + SIMPAN KE FIREBASE)
+    // PROSES SIMPAN
     $("saveBtn").addEventListener("click", async () => {
       const title = $("scriptTitle").value.trim();
       const imageLink = $("scriptImage").value.trim();
@@ -736,57 +729,47 @@
         return;
       }
 
-      $("saveBtn").textContent = "⏳ MENYIMPAN...";
+      $("saveBtn").textContent = "⏳...";
       $("saveBtn").disabled = true;
 
       try {
         let finalImageUrl = imageLink;
 
-        // UPLOAD GAMBAR KE UGUU.SE (SERVER GAMBAR SUPER STABIL)
         if (file) {
           const formData = new FormData();
-          formData.append("files[]", file);
+          formData.append("image", file);
 
-          const response = await fetch("https://uguu.se/upload.php", {
+          const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
             method: "POST",
             body: formData
           });
           
           const result = await response.json();
           
-          if (result.success && result.files && result.files.length > 0) {
-            finalImageUrl = result.files[0].url; 
+          if (result.success) {
+            finalImageUrl = result.data.url; 
           } else {
-            throw new Error("Gagal upload ke server gambar");
+            throw new Error("Gagal upload");
           }
         }
 
-        const dataScript = { 
-          title, 
-          image: finalImageUrl, 
-          desc, 
-          content 
-        };
+        const dataScript = { title, image: finalImageUrl, desc, content };
 
         if (editingId) {
           const scriptRef = ref(db, `scripts/${editingId}`);
-          update(scriptRef, dataScript).then(() => {
-            showToast("Script berhasil diupdate!");
-          });
+          update(scriptRef, dataScript).then(() => showToast("Script diupdate!"));
         } else {
           dataScript.views = 0;
-          push(dbRef, dataScript).then(() => {
-            showToast("Script berhasil diupload!");
-          });
+          push(dbRef, dataScript).then(() => showToast("Script diupload!"));
         }
 
         adminFormModal.classList.remove("show");
         editingId = null;
       } catch (error) {
         console.error(error);
-        showToast("Upload Gagal / Server Penuh!", "#ff2b2b");
+        showToast("Upload Gagal!", "#ff2b2b");
       } finally {
-        $("saveBtn").textContent = "💾 SIMPAN SCRIPT";
+        $("saveBtn").textContent = "💾 SIMPAN";
         $("saveBtn").disabled = false;
       }
     });
@@ -801,17 +784,15 @@
       $("scriptDesc").value = sc.desc;
       $("scriptContent").value = sc.content;
       fileInput.value = "";
-      fileBtnText.textContent = "📁 Ganti Gambar (Opsional)";
+      fileBtnText.textContent = "📁 Ganti (Opsional)";
       
       openForm(true);
     }
 
     function deleteScript(id) {
-      if (!confirm("Yakin hapus script ini?")) return;
+      if (!confirm("Hapus script ini?")) return;
       const scriptRef = ref(db, `scripts/${id}`);
-      remove(scriptRef).then(() => {
-        showToast("Script dihapus", "#ff2b2b");
-      });
+      remove(scriptRef).then(() => showToast("Script dihapus", "#ff2b2b"));
     }
 
     /* ================= TOMBOL TAMBAH SCRIPT (FAB) ================= */
@@ -823,23 +804,19 @@
         if (!document.getElementById("fabAdd")) {
           const fab = document.createElement("button");
           fab.id = "fabAdd";
-          fab.innerHTML = "+ UPLOAD SCRIPT";
+          fab.innerHTML = "+ UPLOAD";
           fab.style.cssText = `
-            position: fixed; bottom: 25px; right: 25px; z-index: 500;
-            background: #00ff88; color: #000; border: none; padding: 15px 25px;
+            position: fixed; bottom: 20px; right: 20px; z-index: 500;
+            background: #00ff88; color: #000; border: none; padding: 12px 20px;
             border-radius: 30px; font-weight: 900; cursor: pointer;
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6); font-size: 0.9rem;
-            transition: 0.2s;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6); font-size: 0.85rem;
           `;
-          fab.onmouseover = () => fab.style.transform = "scale(1.05)";
-          fab.onmouseout = () => fab.style.transform = "scale(1)";
           fab.onclick = () => openForm(false);
           document.body.appendChild(fab);
         }
       } else {
         loginBtn.style.display = "inline-block";
         logoutBtn.style.display = "none";
-        
         const fab = document.getElementById("fabAdd");
         if (fab) fab.remove();
       }
@@ -849,4 +826,4 @@
     updateAdminUI();
   </script>
 </body>
-</html>
+ </html>
