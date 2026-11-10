@@ -15,8 +15,7 @@
 
   body {
     min-height: 100vh;
-    background: #0a0000;
-    background-image: radial-gradient(circle at 50% 0%, #2a0000 0%, #0a0000 60%, #050000 100%);
+    background: #050505;
     color: #fff;
     padding: 20px;
     position: relative;
@@ -31,7 +30,7 @@
   }
 
   .btn-admin-corner {
-    background: linear-gradient(145deg, #3a0000, #1a0000);
+    background: #111;
     color: #ff4d4d;
     border: 1px solid #ff2b2b;
     padding: 8px 16px;
@@ -40,7 +39,6 @@
     letter-spacing: 1px;
     cursor: pointer;
     transition: 0.25s;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
     border-radius: 20px;
   }
 
@@ -89,7 +87,7 @@
   .search-container input {
     width: 100%;
     padding: 12px 20px;
-    background: #1a0505;
+    background: #111;
     border: 1px solid #ff2b2b;
     color: #fff;
     font-size: 0.9rem;
@@ -103,13 +101,13 @@
   .search-container input:focus {
     outline: none;
     box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
-    background: #2a0505;
+    background: #1a1a1a;
   }
 
   /* Grid Card */
   .script-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 20px;
     max-width: 1100px;
     margin: 0 auto;
@@ -117,26 +115,25 @@
   }
 
   .script-card {
-    background: linear-gradient(160deg, #1a0000, #0d0000);
-    border: 1px solid #ff2b2b;
-    border-radius: 16px;
+    background: #0a0a0a;
+    border: 1px solid #333;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, border-color 0.2s;
     display: flex;
     flex-direction: column;
   }
 
   .script-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+    transform: translateY(-3px);
+    border-color: #ff2b2b;
   }
 
   .script-card img {
     width: 100%;
-    height: 160px;
+    height: 180px;
     object-fit: cover;
-    border-bottom: 1px solid #ff2b2b;
+    border-bottom: 1px solid #333;
     background: #000;
   }
 
@@ -148,22 +145,39 @@
     font-size: 1.1rem;
     font-weight: 800;
     letter-spacing: 1px;
-    text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
   }
 
   .card-body .desc {
     font-size: 0.85rem;
-    color: #ddd;
+    color: #aaa;
     margin-bottom: 15px;
     line-height: 1.4;
     flex: 1;
     font-weight: 500;
   }
 
+  /* Tata Letak Button & View */
+  .card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .view-counter {
+    font-size: 0.75rem;
+    color: #ff9999;
+    text-align: center;
+    font-weight: 600;
+    background: #1a0000;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px dashed #ff4d4d;
+  }
+
   .copy-btn {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(145deg, #3a0000, #1a0000);
+    background: #111;
     border: 1px solid #ff2b2b;
     color: #ff4d4d;
     font-weight: 800;
@@ -177,7 +191,6 @@
   .copy-btn:hover {
     background: #ff2b2b;
     color: #fff;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
   }
 
   .copy-btn.copied {
@@ -185,12 +198,12 @@
     color: #00ff88;
   }
 
-  /* Modal */
+  /* Modal & Form */
   .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.9);
     z-index: 999;
     justify-content: center;
     align-items: center;
@@ -201,13 +214,13 @@
   .modal.show { display: flex; }
 
   .modal-box {
-    background: #140000;
+    background: #0a0a0a;
     border: 1px solid #ff2b2b;
     padding: 25px;
-    border-radius: 16px;
+    border-radius: 12px;
     max-width: 450px;
     width: 100%;
-    box-shadow: 0 0 35px rgba(255, 0, 0, 0.6);
+    box-shadow: 0 0 35px rgba(255, 0, 0, 0.4);
     max-height: 90vh;
     overflow-y: auto;
   }
@@ -216,15 +229,14 @@
     color: #ff4d4d;
     margin-bottom: 20px;
     text-align: center;
-    letter-spacing: 2px;
     font-size: 1.2rem;
   }
 
   .modal-box input, .modal-box textarea {
     width: 100%;
     padding: 12px;
-    background: #0a0000;
-    border: 1px solid #ff2b2b;
+    background: #111;
+    border: 1px solid #333;
     color: #fff;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -239,7 +251,7 @@
 
   .modal-box input:focus, .modal-box textarea:focus {
     outline: none;
-    box-shadow: 0 0 12px rgba(255, 0, 0, 0.8);
+    border-color: #ff2b2b;
   }
 
   .modal-box label {
@@ -264,27 +276,15 @@
   }
 
   .btn-green { background: #00ff88; color: #000; }
-  .btn-green:hover { background: #00cc6a; box-shadow: 0 0 15px rgba(0, 255, 136, 0.5); }
-  
+  .btn-green:hover { background: #00cc6a; }
   .btn-red { background: #ff2b2b; color: #fff; }
-  .btn-red:hover { background: #cc0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
-
+  .btn-red:hover { background: #cc0000; }
   .btn-outline { background: transparent; border: 1px solid #ff2b2b; color: #ff4d4d; }
-  .btn-outline:hover { background: #3a0000; }
+  .btn-outline:hover { background: #1a0000; }
 
-  .admin-card-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-  }
-  
+  .admin-card-actions { display: flex; gap: 8px; margin-top: 10px; }
   .admin-card-actions button {
-    flex: 1;
-    padding: 8px;
-    font-size: 0.75rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 700;
+    flex: 1; padding: 8px; font-size: 0.75rem; border-radius: 6px; cursor: pointer; font-weight: 700;
   }
 
   .empty-msg {
@@ -292,29 +292,46 @@
     color: #ff9999;
     padding: 50px 10px;
     font-size: 0.95rem;
-    letter-spacing: 1px;
     grid-column: 1 / -1;
-    font-weight: 600;
   }
 
   .toast {
-    position: fixed;
-    bottom: 25px;
-    left: 50%;
+    position: fixed; bottom: 25px; left: 50%;
     transform: translateX(-50%) translateY(100px);
-    background: #1a0000;
-    border: 1px solid #00ff88;
-    color: #00ff88;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    opacity: 0;
-    transition: 0.3s;
-    z-index: 1000;
-    font-weight: 700;
+    background: #111; border: 1px solid #00ff88; color: #00ff88;
+    padding: 12px 24px; border-radius: 30px; font-size: 0.85rem;
+    opacity: 0; transition: 0.3s; z-index: 1000; font-weight: 700;
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* Input File Kustom */
+  .file-input-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+  }
+  .file-input-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .file-input-btn {
+    border: 1px dashed #ff2b2b;
+    color: #ff4d4d;
+    background: #111;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
 </style>
 </head>
 <body>
@@ -357,8 +374,15 @@
       <label>Judul Script</label>
       <input type="text" id="scriptTitle" placeholder="Contoh: Auto Farm Blox Fruits">
 
-      <label>Link Gambar (Thumbnail)</label>
-      <input type="text" id="scriptImage" placeholder="https://imagetourl.cloud/...">
+      <label>Pilih Foto dari Galeri (Otomatis Upload)</label>
+      <div class="file-input-wrapper">
+        <button class="file-input-btn" id="fileBtnText">📁 Pilih Gambar...</button>
+        <input type="file" id="scriptFile" accept="image/*">
+      </div>
+      <div style="text-align:center; color:#666; font-size:0.75rem; margin: 10px 0;">- ATAU -</div>
+
+      <label>Link Gambar (URL)</label>
+      <input type="text" id="scriptImage" placeholder="https://...">
 
       <label>Deskripsi Singkat</label>
       <input type="text" id="scriptDesc" placeholder="Deskripsi script...">
@@ -376,13 +400,13 @@
   <div class="toast" id="toast">✔ Berhasil</div>
 
   <!-- ========================================== -->
-  <!-- FIREBASE SDK & LOGIC                       -->
+  <!-- LOGIC FIREBASE & IMGBB                     -->
   <!-- ========================================== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-    import { getDatabase, ref, onValue, push, remove, update } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+    import { getDatabase, ref, onValue, push, remove, update, runTransaction } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
-    // KONFIGURASI FIREBASE ANDA
+    // KONFIGURASI FIREBASE
     const firebaseConfig = {
       apiKey: "AIzaSyDo5CH0HzspnqSMOwt6YJ_NEoJzMC-_ex8",
       authDomain: "yohanarj.firebaseapp.com",
@@ -394,12 +418,14 @@
       measurementId: "G-NQ8LX794M2"
     };
 
-    // Inisialisasi Firebase
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
     const dbRef = ref(db, 'scripts');
 
-    /* ================= KONFIGURASI ================= */
+    /* ================= KONFIGURASI IMGBB ================= */
+    const IMGBB_API_KEY = "7d99e80ba32f01206cc5f9ef70d98e1f"; 
+
+    /* ================= KONFIGURASI LAIN ================= */
     const ADMIN_PASSWORD = "11";
     const LOGIN_KEY = "arj_admin_logged";
 
@@ -417,6 +443,8 @@
     const adminFormModal = $("adminFormModal");
     const toast = $("toast");
     const searchInput = $("searchInput");
+    const fileInput = $("scriptFile");
+    const fileBtnText = $("fileBtnText");
 
     /* ================= UTIL ================= */
     function showToast(msg, color = "#00ff88") {
@@ -435,6 +463,14 @@
       return d.innerHTML;
     }
 
+    // Tampilkan nama file saat dipilih
+    fileInput.addEventListener("change", (e) => {
+      if(e.target.files.length > 0) {
+        fileBtnText.textContent = "✅ " + e.target.files[0].name;
+        fileBtnText.style.color = "#00ff88";
+      }
+    });
+
     /* ================= AMBIL DATA REALTIME ================= */
     onValue(dbRef, (snapshot) => {
       scripts = [];
@@ -443,7 +479,7 @@
         for (const key in data) {
           scripts.push({ id: key, ...data[key] });
         }
-        scripts.reverse(); // Yang terbaru di atas
+        scripts.reverse(); 
       }
       render(searchInput.value);
     });
@@ -477,14 +513,19 @@
         }
 
         const imgUrl = sc.image ? escapeHtml(sc.image) : 'https://placehold.co/600x400/1a0000/ff2b2b?text=No+Image';
+        const views = sc.views || 0;
 
         card.innerHTML = `
           <img src="${imgUrl}" alt="${escapeHtml(sc.title)}" onerror="this.src='https://placehold.co/600x400/1a0000/ff2b2b?text=No+Image'">
           <div class="card-body">
             <h4>${escapeHtml(sc.title)}</h4>
             <div class="desc">${escapeHtml(sc.desc || "-")}</div>
-            <button class="copy-btn" data-id="${sc.id}">📋 COPY SCRIPT</button>
-            ${adminButtons}
+            
+            <div class="card-footer">
+              <div class="view-counter">👁️ ${views} Kali Di-Copy</div>
+              <button class="copy-btn" data-id="${sc.id}">📋 COPY SCRIPT</button>
+              ${adminButtons}
+            </div>
           </div>
         `;
         grid.appendChild(card);
@@ -509,7 +550,7 @@
       render(e.target.value);
     });
 
-    /* ================= COPY SCRIPT ================= */
+    /* ================= COPY SCRIPT & TAMBAH VIEW ================= */
     function copyScript(id, btn) {
       const sc = scripts.find(s => s.id === id);
       if (!sc) return;
@@ -520,6 +561,13 @@
             btn.textContent = "✔ TERSALIN!";
             btn.classList.add("copied");
             showToast("Script berhasil disalin!");
+            
+            // TAMBAH VIEW KE FIREBASE SECARA REALTIME
+            const viewRef = ref(db, `scripts/${id}/views`);
+            runTransaction(viewRef, (currentViews) => {
+              return (currentViews || 0) + 1;
+            });
+
             setTimeout(() => {
               btn.textContent = "📋 COPY SCRIPT";
               btn.classList.remove("copied");
@@ -537,6 +585,13 @@
             btn.textContent = "✔ TERSALIN!";
             btn.classList.add("copied");
             showToast("Script berhasil disalin!");
+            
+            // TAMBAH VIEW KE FIREBASE
+            const viewRef = ref(db, `scripts/${id}/views`);
+            runTransaction(viewRef, (currentViews) => {
+              return (currentViews || 0) + 1;
+            });
+
             setTimeout(() => {
               btn.textContent = "📋 COPY SCRIPT";
               btn.classList.remove("copied");
@@ -597,6 +652,9 @@
         $("scriptImage").value = "";
         $("scriptDesc").value = "";
         $("scriptContent").value = "";
+        fileInput.value = ""; 
+        fileBtnText.textContent = "📁 Pilih Gambar...";
+        fileBtnText.style.color = "#ff4d4d";
         editingId = null;
       } else {
         $("formTitle").textContent = "✏️ EDIT SCRIPT";
@@ -608,32 +666,72 @@
       editingId = null;
     });
 
-    $("saveBtn").addEventListener("click", () => {
+    // PROSES SIMPAN (UPLOAD KE IMGBB + SIMPAN KE FIREBASE)
+    $("saveBtn").addEventListener("click", async () => {
       const title = $("scriptTitle").value.trim();
-      const image = $("scriptImage").value.trim();
+      const imageLink = $("scriptImage").value.trim();
       const desc  = $("scriptDesc").value.trim();
       const content = $("scriptContent").value.trim();
+      const file = fileInput.files[0];
 
       if (!title || !content) {
         showToast("Judul & isi script wajib diisi!", "#ff2b2b");
         return;
       }
 
-      const dataScript = { title, image, desc, content };
+      $("saveBtn").textContent = "⏳ MENYIMPAN...";
+      $("saveBtn").disabled = true;
 
-      if (editingId) {
-        const scriptRef = ref(db, `scripts/${editingId}`);
-        update(scriptRef, dataScript).then(() => {
-          showToast("Script berhasil diupdate!");
-        });
-      } else {
-        push(dbRef, dataScript).then(() => {
-          showToast("Script berhasil diupload!");
-        });
+      try {
+        let finalImageUrl = imageLink;
+
+        // JIKA ADMIN MEMILIH FOTO DARI GALERI, UPLOAD KE IMGBB
+        if (file) {
+          const formData = new FormData();
+          formData.append("image", file);
+
+          const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+            method: "POST",
+            body: formData
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            finalImageUrl = result.data.url; 
+          } else {
+            throw new Error("Gagal upload ke ImgBB");
+          }
+        }
+
+        const dataScript = { 
+          title, 
+          image: finalImageUrl, 
+          desc, 
+          content 
+        };
+
+        if (editingId) {
+          const scriptRef = ref(db, `scripts/${editingId}`);
+          update(scriptRef, dataScript).then(() => {
+            showToast("Script berhasil diupdate!");
+          });
+        } else {
+          dataScript.views = 0;
+          push(dbRef, dataScript).then(() => {
+            showToast("Script berhasil diupload!");
+          });
+        }
+
+        adminFormModal.classList.remove("show");
+        editingId = null;
+      } catch (error) {
+        console.error(error);
+        showToast("Gagal upload gambar, cek koneksi!", "#ff2b2b");
+      } finally {
+        $("saveBtn").textContent = "💾 SIMPAN SCRIPT";
+        $("saveBtn").disabled = false;
       }
-
-      adminFormModal.classList.remove("show");
-      editingId = null;
     });
 
     function startEdit(id) {
@@ -645,6 +743,8 @@
       $("scriptImage").value = sc.image || "";
       $("scriptDesc").value = sc.desc;
       $("scriptContent").value = sc.content;
+      fileInput.value = "";
+      fileBtnText.textContent = "📁 Ganti Gambar (Opsional)";
       
       openForm(true);
     }
