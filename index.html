@@ -16,7 +16,8 @@
   body {
     min-height: 100vh;
     background: #050505;
-    background-image: radial-gradient(circle at 50% 0%, #2a0000 0%, #0a0000 60%, #050000 100%);
+    /* Background gradasi ungu gelap ke hitam */
+    background-image: radial-gradient(circle at 50% 0%, #1a0033 0%, #0a0000 60%, #050000 100%);
     color: #fff;
     padding: 15px;
     position: relative;
@@ -33,19 +34,19 @@
     font-weight: 900;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #ff2b2b;
-    text-shadow: 0 0 10px #ff0000, 0 0 25px #ff0000;
+    color: #a855f7; /* Ungu Neon */
+    text-shadow: 0 0 10px #9333ea, 0 0 25px #7e22ce;
   }
 
   /* Animasi Teks Rainbow */
   @keyframes rainbow {
-    0% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
-    17% { color: #ff8800; text-shadow: 0 0 10px #ff8800; }
-    33% { color: #ffff00; text-shadow: 0 0 10px #ffff00; }
-    50% { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
-    67% { color: #00ccff; text-shadow: 0 0 10px #00ccff; }
-    83% { color: #8800ff; text-shadow: 0 0 10px #8800ff; }
-    100% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
+    0% { color: #a855f7; text-shadow: 0 0 10px #a855f7; }
+    17% { color: #3b82f6; text-shadow: 0 0 10px #3b82f6; }
+    33% { color: #06b6d4; text-shadow: 0 0 10px #06b6d4; }
+    50% { color: #d946ef; text-shadow: 0 0 10px #d946ef; }
+    67% { color: #8b5cf6; text-shadow: 0 0 10px #8b5cf6; }
+    83% { color: #6366f1; text-shadow: 0 0 10px #6366f1; }
+    100% { color: #a855f7; text-shadow: 0 0 10px #a855f7; }
   }
 
   .header p {
@@ -70,22 +71,22 @@
     width: 100%;
     padding: 12px 15px;
     background: #111;
-    border: 1px solid #ff2b2b;
+    border: 1px solid #a855f7; /* Garis tepi ungu */
     color: #fff;
     font-size: 0.85rem;
     border-radius: 20px;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
   }
 
   .search-container input:focus {
     outline: none;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
   }
 
   .total-script {
     text-align: left;
     font-size: 0.8rem;
-    color: #ff9999;
+    color: #c084fc; /* Teks ungu terang */
     font-weight: 700;
     padding-left: 10px;
   }
@@ -103,7 +104,7 @@
   /* Desain Kotak Script */
   .script-card {
     background: #0a0a0a;
-    border: 1px solid #ff2b2b;
+    border: 1px solid #a855f7; /* Garis tepi ungu */
     border-radius: 8px;
     padding: 12px;
     display: flex;
@@ -113,7 +114,7 @@
   }
 
   .script-card:hover {
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
   }
 
   .card-top {
@@ -123,7 +124,7 @@
   }
 
   .card-top h4 {
-    color: #ff4d4d;
+    color: #c084fc; /* Judul script ungu */
     font-size: 0.85rem;
     font-weight: 800;
     margin-bottom: 5px;
@@ -162,7 +163,7 @@
     cursor: pointer;
     border-radius: 4px;
     text-align: center;
-    border: 1px solid #ff2b2b;
+    border: 1px solid #a855f7;
   }
 
   .btn-view {
@@ -173,11 +174,17 @@
 
   .copy-btn {
     background: #111;
-    color: #ff4d4d;
+    color: #c084fc; /* Teks tombol ungu */
   }
 
-  .copy-btn:hover { background: #ff2b2b; color: #fff; }
-  .copy-btn.copied { border-color: #00ff88; color: #00ff88; }
+  .copy-btn:hover { 
+    background: #a855f7; 
+    color: #fff; 
+  }
+  .copy-btn.copied { 
+    border-color: #00ff88; 
+    color: #00ff88; 
+  }
 
   /* Modal Lihat Script */
   .modal {
@@ -195,7 +202,7 @@
 
   .modal-box {
     background: #0a0a0a;
-    border: 1px solid #ff2b2b;
+    border: 1px solid #a855f7; /* Border modal ungu */
     padding: 15px;
     border-radius: 8px;
     max-width: 500px;
@@ -203,10 +210,11 @@
     max-height: 90vh;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);
   }
 
   .modal-box h3 {
-    color: #ff4d4d;
+    color: #c084fc;
     margin-bottom: 15px;
     text-align: center;
     font-size: 1rem;
@@ -234,15 +242,21 @@
     border-radius: 6px;
     text-align: center;
     width: 100%;
-    border: 1px solid #ff2b2b;
+    border: 1px solid #a855f7; /* Border tombol tutup ungu */
     background: transparent; 
-    color: #ff4d4d;
+    color: #c084fc;
     font-size: 0.8rem;
+    transition: 0.2s;
+  }
+
+  .btn:hover {
+    background: #a855f7;
+    color: #fff;
   }
 
   .empty-msg {
     text-align: center;
-    color: #ff9999;
+    color: #c084fc;
     padding: 30px 10px;
     font-size: 0.85rem;
     grid-column: 1 / -1;
@@ -252,9 +266,16 @@
   .toast {
     position: fixed; bottom: 20px; left: 50%;
     transform: translateX(-50%) translateY(100px);
-    background: #111; border: 1px solid #00ff88; color: #00ff88;
-    padding: 10px 20px; border-radius: 20px; font-size: 0.75rem;
-    opacity: 0; transition: 0.3s; z-index: 1000; font-weight: 700;
+    background: #111; 
+    border: 1px solid #00ff88; 
+    color: #00ff88;
+    padding: 10px 20px; 
+    border-radius: 20px; 
+    font-size: 0.75rem;
+    opacity: 0; 
+    transition: 0.3s; 
+    z-index: 1000; 
+    font-weight: 700;
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 </style>
@@ -320,7 +341,7 @@
       {
         id: "5",
         title: "SCRIPT ATOK",
-        desc: "Script Atok", // Keterangan KEY: 11 dihapus agar tidak bingung jika tidak butuh key
+        desc: "Script Atok", 
         content: 'loadstring(game:HttpGet("https://web-feature-garden.lovable.app/api/public/raw/39b0dcfa-e80c-4a84-a01b-f532451131d1"))()'
       }
     ];
@@ -460,4 +481,4 @@
     render();
   </script>
 </body>
-        </html>
+</html>
